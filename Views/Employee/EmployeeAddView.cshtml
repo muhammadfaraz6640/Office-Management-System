@@ -1,0 +1,67 @@
+﻿@model OMS.Models.Employees.Employee
+@{
+    ViewBag.Title = "EmployeeAddView";
+    Layout = "~/Views/Shared/_OMSLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h3 class="title"><i class="fa fa-angle-right text-color"></i> Add New Employee</h3>
+        @using (Html.BeginForm("EmployeeAdd", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row mt">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h4 class="title">Employee Form</h4>
+                    <div id="message"></div>
+                    <form enctype="multipart/form-data">                        
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Emp_Name, new { placeholder = "Employee Name", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Emp_Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Emp_Email, new { placeholder = "Employee Email", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Emp_Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Emp_Password, new { placeholder = "Employee Password", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Emp_Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownListFor(Model => Model.Emp_Type_id, new SelectList(ViewBag.EmpList, "Emp_Type_id", "Emp_Type"), "Select Employee Type", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Emp_Type_id, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownListFor(Model => Model.Bid, new SelectList(ViewBag.BranchList, "Bid", "Branch_Name"), "Select Employee Branch", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Bid, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color: black;font-weight: bold;">Select Employee Image</label>
+                            <input type="file" name="ImageFile" required />
+
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Emp_Contact, new { placeholder = "Employee Contact", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Emp_Contact, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-check">
+                            Male
+                            @Html.RadioButtonFor(Model => Model.Emp_Gender, "Male", new { @checked = true })
+                            Female
+                            @Html.RadioButtonFor(Model => Model.Emp_Gender, "Female")
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Emp_Address, new { placeholder = "Employee Address", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Emp_Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-send">
+                            <button type="submit" class="btn btn-color">Add Employee</button>
+                        </div>
+
+                    </form>
+</div>
+            </div>
+        }
+    </section>
+</section>    

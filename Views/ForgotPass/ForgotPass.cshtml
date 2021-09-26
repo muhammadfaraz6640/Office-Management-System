@@ -1,0 +1,79 @@
+﻿@model OMS.Models.ForgetPass
+@{ Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ForgotPass</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OMS">
+    <meta name="author" content="Muhammad Faraz Ansar">
+    <title>OMS-Office Management System</title>
+    <link href=@Url.Content("/Content/lib/bootstrap/css/bootstrap.min.css") rel="stylesheet">
+
+    <link href=@Url.Content("/Content/lib/font-awesome/css/font-awesome.css") rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/lib/bootstrap-datepicker/css/datepicker.css") />
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/lib/bootstrap-daterangepicker/daterangepicker.css") />
+
+    <link href=@Url.Content("/Content/css/style.css") rel="stylesheet">
+    <link href=@Url.Content("/Content/css/style-responsive.css") rel="stylesheet">
+    <style>
+        body {
+            background-image: url("../../Content/img/login-bg-3.jpg");            
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="login-page">
+        <div class="container">
+            @using (Html.BeginForm("GetPass", "ForgotPass", FormMethod.Post))
+            {
+                <div class="form-login">
+                    <h2 class="form-login-heading">Get Your Password</h2>
+
+                    <div class="login-wrap">                        
+                        @Html.TextBoxFor(Model => Model.Email, new { placeholder = "Email", @class = "form-control", Type = "email" })
+                        @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
+                        <hr>
+                        <input class="btn btn-theme btn-block" type="submit" value="Get Password">
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <script src="/Content/lib/jquery/jquery.min.js"></script>
+    <script src="/Content/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/jquery.backstretch.min.js"></script>
+
+    <script src="/Content/lib/jquery/jquery.min.js"></script>
+    <script src="/Content/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="/Content/lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/Content/lib/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/jquery.nicescroll.js"></script>
+    <script src="/Content/lib/common-scripts.js" )></script>
+    <script src="/Content/lib/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="/Content/lib/bootstrap-switch.js"></script>
+    <script src="/Content/lib/jquery.tagsinput.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type='text/javascript' src='http://beta.albertorivero.com/wp-content/themes/ReverieRiverov1/js/jquery.js?ver=3.4.2'></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.3/jquery.backstretch.min.js"></script>
+
+
+    <script type="text/javascript">
+        $.backstretch("/Content/img/login-bg-3.jpg", {
+            speed: 600
+        });
+    </script>
+
+</body>
+</html>

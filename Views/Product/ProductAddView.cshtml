@@ -1,0 +1,48 @@
+﻿@model OMS.Models.Products.Product
+@{
+    ViewBag.Title = "ProductView";
+    Layout = "~/Views/Shared/_OMSLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h3 class="title"><i class="fa fa-angle-right text-color"></i> Add New Product</h3>
+        @using (Html.BeginForm("ProductAdd", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row mt">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h4 class="title">Product Form</h4>
+                    <div id="message"></div>                    
+                    <form class="contact-form">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Product_Name, new { placeholder = "Product Name", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Product_Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label style="color: black;font-weight: bold;">Select Product Image</label>
+                            <input type="file" name="ImageFile" required />
+                        </div>
+                        <div class="btn-group">
+                            @Html.DropDownListFor(model => model.Cid, new SelectList(ViewBag.CategoryList, "Cid", "CatName"), "Select Product Category", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Cid, "", new { @class = "text-danger" })
+                        </div>
+                        <br />
+                        <br />
+                        <div class="btn-group">
+                            @Html.DropDownListFor(model => model.Vid, new SelectList(ViewBag.VendorList, "Vid", "Vendor_Name"), "Select Product Vendor", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Vid, "", new { @class = "text-danger" })
+                        </div>
+                        <br />
+                        <br />
+
+                        <div class="form-send">
+                            <button type="submit" class="btn btn-color">Add Product</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        }
+    </section>
+</section>

@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OMS">
+    <meta name="author" content="Muhammad Faraz Ansar">
+    <title>OMS-Office Management System</title>
+    <link href=@Url.Content("/Content/lib/bootstrap/css/bootstrap.min.css") rel="stylesheet">
+
+    <link href=@Url.Content("/Content/lib/font-awesome/css/font-awesome.css") rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/lib/bootstrap-datepicker/css/datepicker.css") />
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/lib/bootstrap-daterangepicker/daterangepicker.css") />
+
+    <link href=@Url.Content("/Content/css/style.css") rel="stylesheet">
+    <link href=@Url.Content("/Content/css/style-responsive.css") rel="stylesheet">
+</head>
+<body>
+    <section id="container">
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <a href="index.html" class="logo"><b>OM<span>S</span></b></a>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Logout</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered"><a href="profile.html"><img src="~/Content/img/DP.jpg" class="img-circle" width="80"></a></p>
+                    <h5 class="centered">Faraz Ansar</h5>
+                    <li class="mt">
+                        <a href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-desktop"></i>
+                            <span>Orders</span>
+                        </a>
+                        <ul class="sub">
+                            <li>@Html.ActionLink("Check Orders", "Index", "Home")</li>
+                            <li><a href="#">Place Order</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span>Employee Management</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="AddEmployee.html">Add Employee</a></li>
+                            <li><a href="AddEmployee.html">Check Employees</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span>Product Management</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="AddProducts.html">Add Product</a></li>
+                            <li><a href="#">Check Products</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span>Vendor Management</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="Vendor.html">Add Vendor</a></li>
+                            <li><a href="#">Check Vendor</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span>Branch Management</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="AddBranch.html">Add Branch</a></li>
+                            <li><a href="#">Check Branches</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-comments-o"></i>
+                            <span>Maps</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="#">Check Locations</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <section id="main-content">
+            @RenderBody();
+        </section>
+    </section>
+
+    <script src="/Content/lib/jquery/jquery.min.js"></script>
+    <script src="/Content/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="/Content/lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/Content/lib/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/jquery.nicescroll.js"></script>
+    <script src="/Content/lib/common-scripts.js" )></script>
+    <script src="/Content/lib/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="/Content/lib/bootstrap-switch.js"></script>
+    <script src="/Content/lib/jquery.tagsinput.js"></script>
+</body>
+</html>
+
+
+$.backstretch("/Content/img/login-bg-3.jpg", {
+            speed: 600
+        });

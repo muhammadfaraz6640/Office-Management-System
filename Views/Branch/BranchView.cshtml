@@ -1,0 +1,61 @@
+﻿@model OMS.Models.Branches.Branch
+
+@{
+    ViewBag.Title = "BranchView";
+    Layout = "~/Views/Shared/_OMSLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h3 class="title"><i class="fa fa-angle-right text-color"></i> Add New Branch</h3>
+        @using (Html.BeginForm("AddBranch", "Branch", FormMethod.Post))
+        {
+            <div class="row mt">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h4 class="title">Branch Form</h4>
+                    <div id="message"></div>
+                    <div class="contact-form php-mail-form">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Branch_Name, new { placeholder = "Branch Name", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Branch_Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Branch_Contact, new { placeholder = "Branch Contact", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Branch_Contact, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Branch_Address, new { placeholder = "Branch Address", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Branch_Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="btn-group">
+                            @Html.DropDownListFor(model => model.Branch_Type, new SelectList(ViewBag.TypeList), "Select Branch Type", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Branch_Type, "", new { @class = "text-danger" })
+                        </div>
+                        <br />
+                        <br />
+                        <div class="btn-group">
+                            @Html.DropDownListFor(model => model.City_id, new SelectList(ViewBag.CityList, "City_id", "City_Name"), "Select Branch City", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.City_id, "", new { @class = "text-danger" })
+                        </div>
+                        <br />
+                        <br />
+                        <div class="btn-group">
+                            @Html.DropDownListFor(model => model.Country_id, new SelectList(ViewBag.CountryList, "Country_id", "Country_Name"), "Select Branch Country", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Country_id, "", new { @class = "text-danger" })
+                        </div>
+                        <br />
+                        <br />
+
+                        <div class="form-send">
+                            <button type="submit" class="btn btn-color">Add Branch</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+        
+    </section>
+</section>    
+

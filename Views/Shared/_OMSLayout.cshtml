@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OMS">
+    <meta name="author" content="Muhammad Faraz Ansar">
+    <title>OMS-Office Management System</title>
+    <link href=@Url.Content("/Content/lib/bootstrap/css/bootstrap.min.css") rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link href=@Url.Content("/Content/lib/font-awesome/css/font-awesome.css") rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/lib/bootstrap-datepicker/css/datepicker.css") />
+    <link rel="stylesheet" type="text/css" href=@Url.Content("/Content/lib/bootstrap-daterangepicker/daterangepicker.css") />
+
+    <link href=@Url.Content("/Content/css/style.css") rel="stylesheet">
+    <link href=@Url.Content("/Content/css/style-responsive.css") rel="stylesheet">
+</head>
+<body>
+    <section id="container">
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <a href="index.html" class="logo"><b>OM<span>S</span></b></a>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li class="logout" style="margin-top:20px;color:white;">@Html.ActionLink("Logout", "Logout", "Home")</li>
+                </ul>
+            </div>
+        </header>
+
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered"><img src="@Url.Content(Session["UImg"].ToString())" class="img-circle" width="80"></p>
+                    <h5 class="centered">@Session["UName"].ToString()</h5>
+                    <li class="mt">
+                        @Html.ActionLink("Dashboard", "Index", "Main")
+                    </li>
+                    @if (Convert.ToInt32(Session["Bid"]) != 1)
+                    {
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span>Orders</span>
+                            </a>
+                            <ul class="sub">
+                                <li>@Html.ActionLink("Add Order", "OrderView", "Order")</li>
+                                <li>@Html.ActionLink("Check Order", "Orders", "Order")</li>
+                            </ul>
+                        </li>
+
+                    }
+
+                    @if (Convert.ToInt32(Session["Bid"]) == 1)
+                    {
+                        <li class="sub-menu">
+                            <a href="#">                                
+                                <i class="fa fa-users"></i>
+                                <span>Employee Management</span>
+                            </a>
+                            <ul class="sub">
+                                <li>@Html.ActionLink("Add Employee", "EmployeeAddView", "Employee")</li>
+                                <li>@Html.ActionLink("Check Employee", "Employees", "Employee")</li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-product-hunt"></i>
+                                <span>Product Management</span>
+                            </a>
+                            <ul class="sub">
+                                <li>@Html.ActionLink("Add Product", "ProductAddView", "Product")</li>
+                                <li>@Html.ActionLink("Check Products", "Products", "Product")</li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-industry"></i>
+                                <span>Vendor Management</span>
+                            </a>
+                            <ul class="sub">
+                                <li>@Html.ActionLink("Add Vendor", "Index", "Vendor")</li>
+                                <li>@Html.ActionLink("Check Vendors", "Vendors", "Vendor")</li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fas fa-code-branch"></i>
+                                <span>Branch Management</span>
+                            </a>
+                            <ul class="sub">
+                                <li>@Html.ActionLink("Add Branch", "Index", "Branch")</li>
+                                <li>@Html.ActionLink("Check Branch", "Branches", "Branch")</li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span>Order Management</span>
+                            </a>
+                            <ul class="sub">                                
+                                <li>@Html.ActionLink("Check All Orders", "OrdersAll", "Order")</li>
+                            </ul>
+                        </li>
+                    }                    
+                </ul>
+            </div>
+        </aside>
+
+        <section id="main-content">
+            @RenderBody();
+        </section>
+    </section>
+        
+    <script src="/Content/lib/jquery/jquery.min.js"></script>
+    <script src="/Content/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="/Content/lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/Content/lib/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/jquery.nicescroll.js"></script>
+    <script src="/Content/lib/common-scripts.js" )></script>
+    <script src="/Content/lib/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="/Content/lib/bootstrap-switch.js"></script>
+    <script src="/Content/lib/jquery.tagsinput.js"></script>
+
+</body>
+</html>

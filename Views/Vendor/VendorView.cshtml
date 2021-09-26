@@ -1,0 +1,54 @@
+﻿@model OMS.Models.Vendors.Vendor
+@{
+    ViewBag.Title = "VendorView";
+    Layout = "~/Views/Shared/_OMSLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h3 class="title"><i class="fa fa-angle-right text-color"></i> Add New Vendor</h3>
+        <div class="row mt">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <h4 class="title">Vendor Form</h4>
+                <div id="message"></div>
+                @using (Html.BeginForm("AddVendor", "Vendor", FormMethod.Post))
+                {
+            <div class="contact-form php-mail-form">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.TextBoxFor(Model => Model.Vendor_Name, new { placeholder = "Vendor Name", @class = "form-control" })
+                    @Html.ValidationMessageFor(Model => Model.Vendor_Name, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(Model => Model.Vendor_Email, new { placeholder = "Vendor Email", @class = "form-control" })
+                    @Html.ValidationMessageFor(Model => Model.Vendor_Email, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(Model => Model.Vendor_Contact, new { placeholder = "Vendor Contact", @class = "form-control" })
+                    @Html.ValidationMessageFor(Model => Model.Vendor_Contact, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(Model => Model.Vendor_Cnic, new { placeholder = "Vendor Cnic", @class = "form-control" })
+                    @Html.ValidationMessageFor(Model => Model.Vendor_Cnic, "", new { @class = "text-danger" })
+                </div>                                    
+                <div class="form-check">
+                    Male
+                    @Html.RadioButtonFor(Model => Model.Vendor_Gender, "Male", new { @checked = true })
+                    Female
+                    @Html.RadioButtonFor(Model => Model.Vendor_Gender, "Female")
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(Model => Model.Vendor_Shop_Address, new { placeholder = "Vendor Shop Address", @class = "form-control" })
+                    @Html.ValidationMessageFor(Model => Model.Vendor_Shop_Address, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-send">
+                    <button type="submit" class="btn btn-color">Add Vendor</button>
+                </div>
+
+            </div>
+                }
+            </div>
+        </div>
+    </section>
+</section>
+

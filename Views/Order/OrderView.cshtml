@@ -1,0 +1,39 @@
+﻿@model OMS.Models.Orders.Order
+@{
+    ViewBag.Title = "OrderView";
+    Layout = "~/Views/Shared/_OMSLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <h3 class="title"><i class="fa fa-angle-right text-color"></i> Add New Product</h3>
+        @using (Html.BeginForm("OrderAdd", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row mt">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h4 class="title">Order Form</h4>
+                    <div id="message"></div>
+                    <form class="contact-form">
+                        @Html.AntiForgeryToken()
+                        <div class="btn-group">
+                            @Html.DropDownListFor(Model => Model.Product_id, new SelectList(ViewBag.ProductList, "Pid", "Product_Name"), "Select Product", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Product_id, "", new { @class = "text-danger" })
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-group">
+                            @Html.TextBoxFor(Model => Model.Qty, new { placeholder = "Product Name", @class = "form-control" })
+                            @Html.ValidationMessageFor(Model => Model.Qty, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-send">
+                            <button type="submit" class="btn btn-color">Add Order</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        }
+    </section>
+</section>
+
+
